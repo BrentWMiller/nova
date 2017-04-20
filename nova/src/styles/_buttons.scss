@@ -1,0 +1,8 @@
+.n-btn {
+	padding: $button-padding;
+	background: gradient(secondary);
+	border: none;
+	border-radius: $button-border-radius;
+	color: color(gray, 1000);
+	font-weight: 500;
+}

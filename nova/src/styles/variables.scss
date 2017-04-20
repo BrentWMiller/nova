@@ -1,0 +1,65 @@
+// ** Colors **
+// ------------------
+
+	// Color Function
+	@function color($color, $variant) {
+		@return map-get(map-get($colors, $color), $variant);
+	}
+	// ex. color(gray, 500);
+
+	// Color Map
+	$colors: (
+		primary: (
+			base: #f3455c,
+			light: #fe5b26
+		),
+		secondary: (
+			base: #0e9cf3,
+			light: #0eede5
+		),
+
+		gray: (
+			0:    hsl(0, 0%, 0%),
+			250:  hsl(250, 10%, 25%),
+			500:  hsl(250, 10%, 50%),
+			750:  hsl(250, 10%, 75%),
+			1000: hsl(250, 0%, 100%)
+		)
+	);
+
+	//Gradient Function
+	@function gradient($color) {
+		@return map-get($gradients, $color);
+	}
+
+	//Gradient Map
+	$gradients: (
+		primary: (linear-gradient(2.5deg, color(primary, base), color(primary, light))),
+		secondary: (linear-gradient(2.5deg, color(secondary, base), color(secondary, light)))
+	);
+
+// ** Base **
+// ------------------
+
+	// Padding
+	$padding-base: .5em;
+
+	// Margin
+	$margin-base: .5em;
+
+	// Borders
+	$border-size-base:	 .1em;
+	$border-radius-base: .2em;
+
+	//Type
+	$font-size-base:	16px;
+	$family-serif:		'Droid Serif', serif;
+	$family-sans-serif: 'Roboto', sans-serif;
+
+// ** Components **
+// ------------------
+
+	// Button
+	$button-padding:	   ($padding-base * 2);
+	$button-border-size:   $border-size-base;
+	$button-border-radius: $border-radius-base;
