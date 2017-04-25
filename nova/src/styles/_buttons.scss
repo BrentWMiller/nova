@@ -1,8 +1,21 @@
 .n-btn {
 	padding: $button-padding;
-	background: gradient(secondary);
+	background-color: $button-bg;
 	border: none;
 	border-radius: $button-border-radius;
 	color: color(gray, 1000);
 	font-weight: 500;
+	transition: .25s ease;
+
+	&:hover {
+		cursor: pointer;
+		background-color: $button-bg-hover;
+	}
+}
+
+@each $color in $color-list {
+	.n-btn__#{$color} {
+		background-color: color(#{$color}, 500);
+		&:hover { background-color: color(#{$color}, 400); }
+	}
 }
