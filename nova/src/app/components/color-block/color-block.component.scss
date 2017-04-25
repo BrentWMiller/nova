@@ -1,0 +1,22 @@
+@import "../../../styles/variables.scss";
+
+.color-block {
+	margin-top: $margin-base;
+
+	&__alternate, &__gradient, &__400, &__500,&__600  {
+		padding: $padding-base;
+	}
+	&__alternate, &__gradient {
+		margin-top: $margin-base;
+	}
+}
+
+@each $color in $color-list {
+	.color-block__#{$color} .color-block {
+		&__alternate { background-color: color(#{$color}, alternate); }
+		&__gradient { background: gradient(#{$color}); }
+		&__400 { background-color: color(#{$color}, 400); }
+		&__500 { background-color: color(#{$color}, 500); }
+		&__600 { background-color: color(#{$color}, 600); }
+	}
+}
