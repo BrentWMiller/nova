@@ -1,0 +1,72 @@
+.n-input {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	margin-top: $margin-base;
+}
+
+.n-input--label {
+	order: 1;
+	flex-basis: 100%;
+	font-family: $family-sans-serif;
+	font-weight: 500;
+}
+
+.n-input--field {
+	order: 2;
+	width: 100%;
+	flex-basis: 100%;
+
+	box-sizing: border-box;
+	padding: ($padding-base * 2);
+
+	border: $border-size-base solid color(gray, 900);
+	border-radius: $border-radius-base;
+
+	transition: .25s ease;
+	&:focus {
+		border-color: color(default, 500);
+		outline: none;
+	}
+	&:focus + .n-input--label {
+		color: color(default, 500);
+		transition: .25s ease;
+	}
+}
+
+// inline
+.n-input__inline {
+	flex-wrap: nowrap;
+	align-items: center;
+	.n-input--label {
+		flex-basis: 0;
+		white-space: nowrap;
+		padding-right: $padding-base;
+	}
+}
+
+// has button
+.n-input__has-btn {
+	.n-input--field {
+		flex-basis: 75%;
+		border-radius: $border-radius-base 0 0 $border-radius-base;
+	}
+	.n-input--btn {
+		order: 3;
+		flex-basis: 25%;
+		border-radius: 0 $border-radius-base $border-radius-base 0; }
+}
+
+// validation
+.n-input__error {
+	color: color(danger, 500);
+	.n-input--field {
+		background-color: color(danger, 200);
+		border-color: color(danger, 300);
+		&:focus {
+			border-color: color(danger, 500);
+			background-color: color(gray, 1000);
+		}
+		&:focus + .n-input--label { color: color(danger, 500); }
+	}
+}
