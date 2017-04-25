@@ -1,6 +1,13 @@
 // ** Colors **
 // ------------------
 
+	// Color Base
+	$color-primary: #0e9cf3;
+	$color-default: #24242e;
+	$color-danger:  #fd4f48;
+
+	$color-list: primary default danger;
+
 	// Color Function
 	@function color($color, $variant) {
 		@return map-get(map-get($colors, $color), $variant);
@@ -10,20 +17,32 @@
 	// Color Map
 	$colors: (
 		primary: (
-			base: #f3455c,
-			light: #fe5b26
+			alternate: saturate(adjust-hue($color-primary, -15deg), 100%),
+			400: lighten($color-primary, 10%),
+			500: $color-primary,
+			600: darken($color-primary, 10%)
 		),
-		secondary: (
-			base: #0e9cf3,
-			light: #0eede5
+		default: (
+			alternate: saturate(adjust-hue($color-default, -25deg), 50%),
+			400: lighten($color-default, 10%),
+			500: $color-default,
+			600: darken($color-default, 10%)
+		),
+		danger: (
+			alternate: saturate(adjust-hue($color-danger, -15deg), 100%),
+			400: lighten($color-danger, 10%),
+			500: $color-danger,
+			600: darken($color-danger, 10%)
 		),
 
 		gray: (
 			0:    hsl(0, 0%, 0%),
-			250:  hsl(250, 10%, 25%),
-			500:  hsl(250, 10%, 50%),
-			750:  hsl(250, 10%, 75%),
-			1000: hsl(250, 0%, 100%)
+			100:  hsl(0, 0%, 10%),
+			250:  hsl(0, 0%, 25%),
+			500:  hsl(0, 0%, 50%),
+			750:  hsl(0, 0%, 75%),
+			900:  hsl(0, 0%, 90%),
+			1000: hsl(0, 0%, 100%)
 		)
 	);
 
@@ -34,8 +53,9 @@
 
 	//Gradient Map
 	$gradients: (
-		primary: (linear-gradient(2.5deg, color(primary, base), color(primary, light))),
-		secondary: (linear-gradient(2.5deg, color(secondary, base), color(secondary, light)))
+		primary:   (linear-gradient(2.5deg, color(primary, 500), color(primary, alternate))),
+		default:   (linear-gradient(2.5deg, color(default, 500), color(default, alternate))),
+		danger:   (linear-gradient(2.5deg, color(danger, 500), color(danger, alternate)))
 	);
 
 // ** Base **
@@ -63,3 +83,6 @@
 	$button-padding:	   ($padding-base * 2);
 	$button-border-size:   $border-size-base;
 	$button-border-radius: $border-radius-base;
+
+	$button-bg: color(default, 500);
+	$button-bg-hover: color(default, 400);
