@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { ColorBlockComponent } from './components/color-block/color-block.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ColorBlockComponent,
   ],
   imports: [
     BrowserModule,
