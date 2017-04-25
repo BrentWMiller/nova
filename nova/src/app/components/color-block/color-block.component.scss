@@ -2,8 +2,9 @@
 
 .color-block {
 	margin-top: $margin-base;
+	color: color(gray, 1000);
 
-	&__alternate, &__gradient, &__400, &__500,&__600  {
+	&__alternate, &__gradient, &__200, &__300, &__400, &__500, &__600, &__700, &__800 {
 		padding: $padding-base;
 	}
 	&__alternate, &__gradient {
@@ -15,8 +16,12 @@
 	.color-block__#{$color} .color-block {
 		&__alternate { background-color: color(#{$color}, alternate); }
 		&__gradient { background: gradient(#{$color}); }
+		&__200 { background-color: color(#{$color}, 200); }
+		&__300 { background-color: color(#{$color}, 300); }
 		&__400 { background-color: color(#{$color}, 400); }
 		&__500 { background-color: color(#{$color}, 500); }
 		&__600 { background-color: color(#{$color}, 600); }
+		&__700 { background-color: color(#{$color}, 700); }
+		&__800 { background-color: color(#{$color}, 800); }
 	}
 }

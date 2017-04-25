@@ -18,21 +18,33 @@
 	$colors: (
 		primary: (
 			alternate: saturate(adjust-hue($color-primary, -15deg), 100%),
+			200: lighten($color-primary, 30%),
+			300: lighten($color-primary, 20%),
 			400: lighten($color-primary, 10%),
 			500: $color-primary,
-			600: darken($color-primary, 10%)
+			600: darken($color-primary, 10%),
+			700: darken($color-primary, 20%),
+			800: darken($color-primary, 30%)
 		),
 		default: (
 			alternate: saturate(adjust-hue($color-default, -25deg), 50%),
+			200: lighten($color-default, 30%),
+			300: lighten($color-default, 20%),
 			400: lighten($color-default, 10%),
 			500: $color-default,
-			600: darken($color-default, 10%)
+			600: darken($color-default, 10%),
+			700: darken($color-default, 20%),
+			800: darken($color-default, 30%)
 		),
 		danger: (
 			alternate: saturate(adjust-hue($color-danger, -15deg), 100%),
+			200: lighten($color-danger, 30%),
+			300: lighten($color-danger, 20%),
 			400: lighten($color-danger, 10%),
 			500: $color-danger,
-			600: darken($color-danger, 10%)
+			600: darken($color-danger, 10%),
+			700: darken($color-danger, 20%),
+			800: darken($color-danger, 30%)
 		),
 
 		gray: (
