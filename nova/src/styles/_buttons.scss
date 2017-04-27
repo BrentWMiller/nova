@@ -1,6 +1,6 @@
 .n-btn {
 	padding: $button-padding;
-	background-color: $button-bg;
+	background-color: color(default, 500);
 	border: $border-size-base solid color(default, 500);
 	border-radius: $button-border-radius;
 	color: color(gray, 1000);
@@ -9,13 +9,18 @@
 
 	&:hover {
 		cursor: pointer;
-		background-color: $button-bg-hover;
+		background-color: color(default, 400);
+		border: $border-size-base solid color(default, 400);
 	}
 }
 
 @each $color in $color-list {
 	.n-btn__#{$color} {
 		background-color: color(#{$color}, 500);
-		&:hover { background-color: color(#{$color}, 400); }
+		border: $border-size-base solid color(#{$color}, 500);
+		&:hover {
+			background-color: color(#{$color}, 400);
+			border: $border-size-base solid color(#{$color}, 400);
+		}
 	}
 }
