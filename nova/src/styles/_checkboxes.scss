@@ -1,0 +1,21 @@
+.n-checkbox{
+	display: flex;
+	align-items: center;
+	.n-checkbox--toggle { display: none; }
+}
+
+// unchecked
+.n-checkbox--toggle-icon:before {
+	content: '\E835';
+	font-family: "Material Icons";
+	font-size: 1.5em;
+	padding-right: $padding-base;
+	cursor: pointer;
+	color: color(gray, 900);
+}
+
+// checked
+.n-checkbox--toggle:checked + .n-checkbox--toggle-icon:before {
+	content: '\E834';
+	color: color(default, 500);
+}

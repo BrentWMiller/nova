@@ -14,6 +14,24 @@
 	}
 }
 
+.n-btn-group {
+	display: flex;
+	align-self: stretch;
+	.n-btn {
+		width: 100%;
+		border-radius: 0;
+	}
+	.n-btn:first-of-type { border-radius: $border-radius-base 0 0 $border-radius-base; }
+	.n-btn:last-of-type { border-radius: 0 $border-radius-base $border-radius-base 0; }
+}
+
+// icons
+.n-btn .material-icons {
+	font-size: 1em;
+	position: relative;
+	top: .15em;
+}
+
 @each $color in $color-list {
 	.n-btn__#{$color} {
 		background-color: color(#{$color}, 500);
