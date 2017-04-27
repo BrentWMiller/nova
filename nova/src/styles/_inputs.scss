@@ -45,7 +45,11 @@
 	.n-input--field { border-radius: $border-radius-base 0 0 $border-radius-base; }
 }
 
-.n-input--btn { border-radius: 0 $border-radius-base $border-radius-base 0; }
+.n-input--btn {
+	white-space: nowrap;
+	border-radius: 0;
+	&:last-of-type { border-radius: 0 $border-radius-base $border-radius-base 0; }
+}
 
 // validation
 .n-input__has-error {
