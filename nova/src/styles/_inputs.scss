@@ -14,7 +14,7 @@
 	width: 100%;
 
 	box-sizing: border-box;
-	padding: ($padding-base * 2);
+	padding: $padding-base;
 
 	border: $border-size-base solid color(gray, 900);
 	border-radius: $border-radius-base;
@@ -48,6 +48,7 @@
 .n-input--btn {
 	white-space: nowrap;
 	border-radius: 0;
+	padding: $padding-base;
 	&:last-of-type { border-radius: 0 $border-radius-base $border-radius-base 0; }
 }
 
