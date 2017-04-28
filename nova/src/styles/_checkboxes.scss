@@ -14,6 +14,10 @@
 	color: color(gray, 900);
 }
 
+.n-checkbox--toggle-icon:hover:before {
+	color: color(default, 300);
+}
+
 // checked
 .n-checkbox--toggle:checked + .n-checkbox--toggle-icon:before {
 	content: '\E834';
