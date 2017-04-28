@@ -1,0 +1,25 @@
+.n-radio{
+	display: flex;
+	align-items: center;
+	.n-radio--toggle { display: none; }
+}
+
+// unchecked
+.n-radio--toggle-icon:before {
+	content: '\E836';
+	font-family: "Material Icons";
+	font-size: 1.5em;
+	padding-right: $padding-base;
+	cursor: pointer;
+	color: color(gray, 900);
+}
+
+.n-radio--toggle-icon:hover:before {
+	color: color(default, 300);
+}
+
+// checked
+.n-radio--toggle:checked + .n-radio--toggle-icon:before {
+	content: '\E837';
+	color: color(default, 500);
+}
