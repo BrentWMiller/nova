@@ -1,58 +1,6 @@
-<div class="n-btn-group">
-	<button class="n-btn" type="button">Check 1</button>
-	<button class="n-btn n-btn__primary" type="button">Check 2</button>
-	<button class="n-btn" type="button">Check 3</button>
-</div>
-
-<div class="n-input n-input__has-action">
-	<label for="inputName" class="n-input--label">Input label</label>
-	<div class="n-input--action-group">
-		<input id="inputName" name="inputName" title="Input description" type="text" class="n-input--field">
-		<button class="n-input--btn n-btn" type="button"><i class="material-icons">done</i> Check 1</button>
-		<button class="n-input--btn n-btn" type="button"><i class="material-icons">http</i> Check 2</button>
-	</div>
-</div>
-
-<div class="n-input n-input__has-action n-input__inline">
-	<label for="inputName" class="n-input--label">Input label</label>
-	<div class="n-input--action-group">
-		<input id="inputName" name="inputName" title="Input description" type="text" class="n-input--field">
-		<button class="n-input--btn n-btn" type="button">Check 1</button>
-		<button class="n-input--btn n-btn n-btn__primary" type="button">Check 2</button>
-		<button class="n-input--btn n-btn" type="button">Check 3</button>
-	</div>
-</div>
-
-<div class="n-input">
-	<label for="inputName" class="n-input--label">Input label</label>
-	<input id="inputName" name="inputName" title="Input description" type="text" class="n-input--field">
-</div>
-
-<div class="n-input n-input__inline">
-	<label for="inputName" class="n-input--label">Input label</label>
-	<input id="inputName" name="inputName" title="Input description" type="text" class="n-input--field">
-</div>
-
-<label for="cbk1" class="n-checkbox">
-	<input class="n-checkbox--toggle" id="cbk1" name="cbk1" type="checkbox" checked>
-	<span class="n-checkbox--toggle-icon"></span>
-	This is a checkbox
-</label>
-
-<label for="cbk2" class="n-checkbox">
-	<input class="n-checkbox--toggle" id="cbk2" name="cbk2" type="checkbox">
-	<span class="n-checkbox--toggle-icon"></span>
-	This is a checkbox 2
-</label>
-
-<label for="rad1" class="n-radio">
-	<input class="n-radio--toggle" id="rad1" name="rad1" type="radio" checked>
-	<span class="n-radio--toggle-icon"></span>
-	This is a radio
-</label>
-
-<label for="rad2" class="n-radio">
-	<input class="n-radio--toggle" id="rad2" name="rad2" type="radio">
-	<span class="n-radio--toggle-icon"></span>
-	This is a radio 2
-</label>
+<h1>Angular Router</h1>
+  <nav>
+    <a routerLink="/" routerLinkActive="active">Home</a>
+    <a routerLink="/animation" routerLinkActive="active">Animation</a>
+  </nav>
+  <router-outlet></router-outlet>
