@@ -11,12 +11,32 @@ import { TimelineLite, Back } from 'gsap';
 export class AnimationComponent implements OnInit {
 	@ViewChild('text') text;
 
-  text: string;
+	//Timelines
+	tlMaster: TimelineLite = new TimelineLite({ paused: true });
+	tlText: TimelineLite = new TimelineLite();
 
-  constructor() { }
+	toggled: boolean;
 
-  ngOnInit() {
-    this.text = 'Animations Rock!';
-  }
+	constructor() { }
 
+	ngOnInit() {
+		this.tlText
+			.fromTo(this.text.nativeElement.style, .15, {
+				backgroundColor: '#fff',
+				color: '#000',
+				ease: Back.easeIn
+			},
+			{
+				backgroundColor: '#0e0e0e',
+				color: '#fff'
+			});
+
+		this.tlMaster.add(this.tlText);
+	}
+
+	animate(): void {
+		this.toggled = !this.toggled;
+
+		this.toggled ? this.tlMaster.play() : this.tlMaster.reverse();
+	}
 }
