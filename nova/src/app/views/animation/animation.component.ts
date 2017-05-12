@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { TimelineLite, Back } from 'gsap';
 
@@ -9,11 +9,11 @@ import { TimelineLite, Back } from 'gsap';
 })
 
 export class AnimationComponent implements OnInit {
-	@ViewChild('text') text;
-
 	//Timelines
 	tlMaster: TimelineLite = new TimelineLite({ paused: true });
 	tlText: TimelineLite = new TimelineLite();
+
+	animateMe: string = '.animate-me';
 
 	toggled: boolean;
 
@@ -21,12 +21,13 @@ export class AnimationComponent implements OnInit {
 
 	ngOnInit() {
 		this.tlText
-			.fromTo(this.text.nativeElement.style, .15, {
+			.fromTo(this.animateMe, .15, {
 				backgroundColor: '#fff',
 				color: '#000',
 				ease: Back.easeIn
 			},
 			{
+				className: '+=test',
 				backgroundColor: '#0e0e0e',
 				color: '#fff'
 			});
