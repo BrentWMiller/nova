@@ -22,14 +22,10 @@ export class AnimationComponent implements OnInit {
 	ngOnInit() {
 		this.tlText
 			.fromTo(this.animateMe, .15, {
-				backgroundColor: '#fff',
-				color: '#000',
 				ease: Back.easeIn
 			},
 			{
-				className: '+=test',
-				backgroundColor: '#0e0e0e',
-				color: '#fff'
+				className: '+=animate-me__on'
 			});
 
 		this.tlMaster.add(this.tlText);
