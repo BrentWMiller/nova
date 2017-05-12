@@ -6,12 +6,13 @@
 	color: color(gray, 1000);
 	font-weight: 500;
 	transition: .25s ease;
+	cursor: pointer;
 
-	&:hover {
-		cursor: pointer;
+	&:hover, &:focus {
 		background-color: color(default, 400);
 		border: $border-size-base solid color(default, 400);
 	}
+	&:focus { outline: none; }
 }
 
 .n-btn-group {
@@ -36,7 +37,7 @@
 	.n-btn__#{$color} {
 		background-color: color(#{$color}, 500);
 		border: $border-size-base solid color(#{$color}, 500);
-		&:hover {
+		&:hover, &:focus {
 			background-color: color(#{$color}, 400);
 			border: $border-size-base solid color(#{$color}, 400);
 		}
