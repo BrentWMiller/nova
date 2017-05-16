@@ -1,0 +1,57 @@
+@import '../../../styles/variables';
+
+.visualizer {
+	display: flex;
+	justify-content: center;
+
+	position: relative;
+	top: 25vh;
+}
+
+.visualizer-data {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+
+	background-color: color(primary,300);
+	font-family: monospace;
+}
+
+.colors {
+	position: relative;
+}
+
+.color {
+	width: 4em;
+	height: 4em;
+
+	border-radius: 50%;
+
+	background-color: color(primary, 300);
+	border: .1em dashed color(primary, 500);
+
+	transition: .25s ease;
+	&--option-2 {
+		position: absolute;
+		top: 2.25em;
+		left: 2.25em;
+	}
+}
+
+.color {
+	&__roseRed {
+		border: transparent;
+		box-shadow: 0 0 5px lighten(#D32F2F, 20%);
+		background-color: #D32F2F;
+	}
+	&__deepPurple {
+		border: transparent;
+		box-shadow: 0 0 5px lighten(#4A148C, 20%);
+		background-color: #4A148C;
+		}
+	&__aquaGreen {
+		border: transparent;
+		box-shadow: 0 0 5px lighten(#69F0AE, 20%);
+		background-color: #69F0AE;
+	}
+}

@@ -1,0 +1,22 @@
+<form [formGroup]="colorForm" (ngSubmit)="updateVisualizer(color)">
+	<select formControlName="colorOption1">
+		<option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
+	</select>
+	<select formControlName="colorOption2">
+		<option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
+	</select>
+	<button type="submit">Submit</button>
+	<button (click)="resetVisualizer()">Reset</button>
+</form>
+<div class="visualizer">
+
+	<div class="colors">
+		<div class="color color--option-1 {{colorForm.controls.colorOption1.value.class}}"></div>
+		<div class="color color--option-2 {{colorForm.controls.colorOption2.value.class}}"></div>
+	</div>
+
+</div>
+
+<div class="visualizer-data">
+	{{colorForm.value | json}}
+</div>
