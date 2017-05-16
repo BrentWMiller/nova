@@ -43,8 +43,6 @@ export class ColorPickerComponent implements OnInit {
 	}
 
 	resetVisualizer() {
-		this.colorOption1 = '';
-		this.colorOption2 = '';
-		this.colorForm.reset();
+		console.log('Form reset');
 	}
 }
