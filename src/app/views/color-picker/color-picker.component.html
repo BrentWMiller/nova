@@ -1,13 +1,22 @@
 <form [formGroup]="colorForm" (ngSubmit)="updateVisualizer(color)">
-	<select formControlName="colorOption1">
-		<option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
-	</select>
-	<select formControlName="colorOption2">
-		<option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
-	</select>
-	<button type="submit">Submit</button>
-	<button (click)="resetVisualizer()">Reset</button>
+	<div class="n-input">
+		<label class="n-input--label">Main</label>
+		<select class="n-input--field" formControlName="colorOption1">
+			<option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
+		</select>
+	</div>
+	<div class="n-input">
+		<label class="n-input--label">Accent</label>
+		<select class="n-input--field" formControlName="colorOption2">
+			<option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
+		</select>
+	</div>
+	<div [hidden]="true">
+		<button class="n-btn" type="submit">Submit</button>
+		<button class="n-btn" (click)="resetVisualizer()">Reset</button>
+	</div>
 </form>
+
 <div class="visualizer">
 
 	<div class="colors">
@@ -17,6 +26,36 @@
 
 </div>
 
-<div class="visualizer-data">
-	{{colorForm.value | json}}
+<div class="data-list">
+	<div class="data-list--group">
+		<div class="data-list--title">Main color</div>
+		<div class="data-list--detail">
+			<div class="detail-label">Name</div>
+			<div class="detail-value">{{colorForm.controls.colorOption1.value.name}}</div>
+		</div>
+		<div class="data-list--detail">
+			<div class="detail-label">Filament</div>
+			<div class="detail-value">{{colorForm.controls.colorOption1.value.value}}</div>
+		</div>
+		<div class="data-list--detail">
+			<div class="detail-label">Price</div>
+			<div class="detail-value">{{colorForm.controls.colorOption1.value.price | currency:'USD':true:'1.2-2'}}</div>
+		</div>
+	</div>
+
+	<div class="data-list--group">
+		<div class="data-list--title">Accent color</div>
+		<div class="data-list--detail">
+			<div class="detail-label">Name</div>
+			<div class="detail-value">{{colorForm.controls.colorOption2.value.name}}</div>
+		</div>
+		<div class="data-list--detail">
+			<div class="detail-label">Filament</div>
+			<div class="detail-value">{{colorForm.controls.colorOption2.value.value}}</div>
+		</div>
+		<div class="data-list--detail">
+			<div class="detail-label">Price</div>
+			<div class="detail-value">{{colorForm.controls.colorOption2.value.price | currency:'USD':true:'1.2-2'}}</div>
+		</div>
+	</div>
 </div>

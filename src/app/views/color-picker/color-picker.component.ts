@@ -7,6 +7,7 @@ export interface IColors {
 	name: string;
 	value: string;
 	class: string;
+	price: number;
 };
 
 @Component({
@@ -25,9 +26,9 @@ export class ColorPickerComponent implements OnInit {
 
 	constructor(private fb: FormBuilder) {
 		this.colors = [
-			{ name: 'Rose Red', value: 'RR-105-ABS', class: 'color__roseRed' },
-			{ name: 'Deep Purple', value: 'DP-109-ABS', class: 'color__deepPurple' },
-			{ name: 'Aqua Green', value: 'AG-023-ABS', class: 'color__aquaGreen' }
+			{ name: 'Rose Red', value: 'RR-105-ABS', class: 'color__roseRed', price: 5 },
+			{ name: 'Deep Purple', value: 'DP-109-ABS', class: 'color__deepPurple', price: 4 },
+			{ name: 'Aqua Green', value: 'AG-023-ABS', class: 'color__aquaGreen', price: 7 }
 		]
 	}
 

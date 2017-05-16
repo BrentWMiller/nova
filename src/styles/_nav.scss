@@ -1,0 +1,18 @@
+.n-nav {
+	display: flex;
+	background-color: color(default, 500);
+
+	font-family: $family-sans-serif;
+}
+
+.n-nav--link {
+	padding: $padding-base * 2;
+
+	color: color(gray, 1000);
+	font-size: .9em;
+	font-weight: 600;
+
+	text-transform: uppercase;
+	text-decoration: none;
+	&:hover { background-color: color(default, 400); }
+}

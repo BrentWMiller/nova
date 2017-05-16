@@ -5,20 +5,55 @@
 	justify-content: center;
 
 	position: relative;
-	top: 25vh;
+	top: 20vh;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
-.visualizer-data {
+.data-list {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	box-sizing: border-box;
+
 	position: fixed;
 	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: $padding-base;
+
+	background-color: color(default, 500);
+	color: color(gray, 1000);
+	font-family: $family-sans-serif;
+
+	&--title {
+		font-size: 1.2em;
+		font-weight: 600;
+	}
+	&--group { width: 100%; }
+}
+
+.data-list--detail {
+	display: flex;
+	flex-direction: column;
+}
+
+.detail-label {
 	width: 100%;
 
-	background-color: color(gray, 900);
-	font-family: monospace;
+	font-weight: 600;
+	font-size: .8em;
+	color: color(default, 300);
+	text-transform: uppercase;
+}
+
+.detail-value:empty {
+	content: 'none';
 }
 
 .colors {
 	position: relative;
+	right: 1em;
 }
 
 .color {

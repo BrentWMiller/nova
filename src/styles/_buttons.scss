@@ -1,5 +1,5 @@
 .n-btn {
-	padding: $button-padding;
+	padding: ($button-padding / 1.5) $button-padding;
 	background-color: color(default, 500);
 	border: $border-size-base solid color(default, 500);
 	border-radius: $button-border-radius;
