@@ -1,13 +1,13 @@
-<form [formGroup]="colorForm" (ngSubmit)="updateVisualizer(color)">
-	<div class="n-input">
+<form class="color-selection" [formGroup]="colorForm" (ngSubmit)="updateVisualizer(color)">
+	<div class="n-input color-input">
 		<label class="n-input--label">Main</label>
-		<select class="n-input--field" formControlName="colorOption1">
+		<select #mainColorInput class="n-input--field" formControlName="colorMain">
 			<option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
 		</select>
 	</div>
-	<div class="n-input">
+	<div class="n-input color-input">
 		<label class="n-input--label">Accent</label>
-		<select class="n-input--field" formControlName="colorOption2">
+		<select #accentColorInput class="n-input--field" formControlName="colorAccent">
 			<option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
 		</select>
 	</div>
@@ -20,42 +20,41 @@
 <div class="visualizer">
 
 	<div class="colors">
-		<div class="color color--option-1 {{colorForm.controls.colorOption1.value.class}}"></div>
-		<div class="color color--option-2 {{colorForm.controls.colorOption2.value.class}}"></div>
+		<div class="color color--main {{colorForm.controls.colorMain.value.class}}"
+			 (click)="focusMainColorInput()"></div>
+		<div class="color color--accent {{colorForm.controls.colorAccent.value.class}}"
+			 (click)="focusAccentColorInput()"></div>
 	</div>
 
 </div>
 
-<div class="data-list">
-	<div class="data-list--group">
-		<div class="data-list--title">Main color</div>
-		<div class="data-list--detail">
-			<div class="detail-label">Name</div>
-			<div class="detail-value">{{colorForm.controls.colorOption1.value.name}}</div>
+<div class="visualizer-data">
+	<div class="n-data" *ngIf="colorForm.controls.colorMain.value">
+		<div class="n-data-group">
+			<div class="n-text-bold">{{colorForm.controls.colorMain.value.name}}</div>
+			<div class="n-text-small n-fade">{{colorForm.controls.colorMain.value.filament}}</div>
 		</div>
-		<div class="data-list--detail">
-			<div class="detail-label">Filament</div>
-			<div class="detail-value">{{colorForm.controls.colorOption1.value.value}}</div>
-		</div>
-		<div class="data-list--detail">
-			<div class="detail-label">Price</div>
-			<div class="detail-value">{{colorForm.controls.colorOption1.value.price | currency:'USD':true:'1.2-2'}}</div>
+		<div class="n-data-group">
+			<div class="n-text-right n-text-small n-fade">Main color</div>
+			<div class="n-text-right n-text-bold">{{colorForm.controls.colorMain.value.price | currency:'USD':true:'1.2-2'}}</div>
 		</div>
 	</div>
-
-	<div class="data-list--group">
-		<div class="data-list--title">Accent color</div>
-		<div class="data-list--detail">
-			<div class="detail-label">Name</div>
-			<div class="detail-value">{{colorForm.controls.colorOption2.value.name}}</div>
+	<div class="n-data" *ngIf="colorForm.controls.colorAccent.value">
+		<div class="n-data-group">
+			<div class="n-text-bold">{{colorForm.controls.colorAccent.value.name}}</div>
+			<div class="n-text-small n-fade">{{colorForm.controls.colorAccent.value.filament}}</div>
 		</div>
-		<div class="data-list--detail">
-			<div class="detail-label">Filament</div>
-			<div class="detail-value">{{colorForm.controls.colorOption2.value.value}}</div>
+		<div class="n-data-group">
+			<div class="n-text-right n-text-small n-fade">Accent color</div>
+			<div class="n-text-right n-text-bold">{{colorForm.controls.colorAccent.value.price | currency:'USD':true:'1.2-2'}}</div>
 		</div>
-		<div class="data-list--detail">
-			<div class="detail-label">Price</div>
-			<div class="detail-value">{{colorForm.controls.colorOption2.value.price | currency:'USD':true:'1.2-2'}}</div>
+	</div>
+	<div class="n-data"
+		 *ngIf="colorForm.controls.colorMain.value && colorForm.controls.colorAccent.value">
+		<div class="n-data-group">
+			<div class="n-text-right n-text-small">
+				Total: {{colorForm.controls.colorMain.value.price + colorForm.controls.colorAccent.value.price | currency:'USD':true:'1.2-2'}}
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TimelineLite, Back } from 'gsap';
 
 export interface IColors {
 	name: string;
-	value: string;
+	filament: string;
 	class: string;
 	price: number;
 };
@@ -17,33 +17,37 @@ export interface IColors {
 })
 
 export class ColorPickerComponent implements OnInit {
+	@ViewChild('mainColorInput') mainColorInput;
+	@ViewChild('accentColorInput') accentColorInput;
 
 	colorForm: FormGroup;
 	colorFormValue: string;
-	colorOption1: string;
-	colorOption2: string;
+	colorMain: string;
+	colorAccent: string;
 	colors: IColors[];
 
 	constructor(private fb: FormBuilder) {
 		this.colors = [
-			{ name: 'Rose Red', value: 'RR-105-ABS', class: 'color__roseRed', price: 5 },
-			{ name: 'Deep Purple', value: 'DP-109-ABS', class: 'color__deepPurple', price: 4 },
-			{ name: 'Aqua Green', value: 'AG-023-ABS', class: 'color__aquaGreen', price: 7 }
-		]
+			{ name: 'Rose Red', filament: 'RR-105-ABS', class: 'color__roseRed', price: 5 },
+			{ name: 'Deep Purple', filament: 'DP-109-ABS', class: 'color__deepPurple', price: 4 },
+			{ name: 'Aqua Green', filament: 'AG-023-ABS', class: 'color__aquaGreen', price: 7 },
+			{ name: 'Gold', filament: 'G-01-PLA', class: 'color__gold', price: 7 },
+			{ name: 'Wine', filament: 'W-013-PLA', class: 'color__wine', price: 3 },
+		];
 	}
 
 	ngOnInit() {
 		this.colorForm = this.fb.group({
-			colorOption1: ['', Validators.required],
-			colorOption2: ['', Validators.required]
+			colorMain: ['', Validators.required],
+			colorAccent: ['', Validators.required]
 		});
 	}
 
-	updateVisualizer() {
-		console.log(this.colorForm.value, this.colorForm.valid);
+	focusMainColorInput(): void {
+		this.mainColorInput.nativeElement.focus();
 	}
 
-	resetVisualizer() {
-		console.log('Form reset');
+	focusAccentColorInput(): void {
+		this.accentColorInput.nativeElement.focus();
 	}
 }
