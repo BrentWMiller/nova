@@ -1,6 +1,6 @@
 .n-nav {
 	display: flex;
-	background-color: color(default, 500);
+	background-color: color(primary, 500);
 
 	font-family: $family-sans-serif;
 }
@@ -14,5 +14,5 @@
 
 	text-transform: uppercase;
 	text-decoration: none;
-	&:hover { background-color: color(default, 400); }
+	&:hover { background-color: color(primary, 400); }
 }

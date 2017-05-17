@@ -1,0 +1,12 @@
+.n-data {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: $padding-base;
+
+	background-color: color(primary, 500);
+	color: color(gray, 1000);
+	font-family: $family-sans-serif;
+}
+
+.n-data-group { width: 100%; }

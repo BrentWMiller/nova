@@ -1,0 +1,28 @@
+.n-table {
+	width: 100%;
+	padding: $padding-base;
+	border-collapse: collapse;
+	font-family: $family-sans-serif;
+}
+
+.n-table--row__header th {
+	text-transform: uppercase;
+	font-size: .85em;
+	color: color(gray, 750);
+}
+
+.n-table--row {
+	font-size: .85em;
+	background-color: color(gray, 950);
+	td, th { padding: $padding-base * 2; }
+	&__header {
+		background-color: transparent;
+	}
+	&__footer {
+		background-color: color(gray, 900);
+	}
+}
+
+.n-table--label {
+	font-weight: 600;
+}
