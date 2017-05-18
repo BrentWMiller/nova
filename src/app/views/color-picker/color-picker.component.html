@@ -29,7 +29,9 @@
 </div>
 
 <div class="visualizer-data">
-	<div class="n-data" *ngIf="colorForm.controls.colorMain.value">
+	<div class="n-data n-data__clickable"
+		 *ngIf="colorForm.controls.colorMain.value"
+		 (click)="focusMainColorInput()">
 		<div class="n-data-group">
 			<div class="n-text-bold">{{colorForm.controls.colorMain.value.name}}</div>
 			<div class="n-text-small n-fade">{{colorForm.controls.colorMain.value.filament}}</div>
@@ -39,7 +41,9 @@
 			<div class="n-text-right n-text-bold">{{colorForm.controls.colorMain.value.price | currency:'USD':true:'1.2-2'}}</div>
 		</div>
 	</div>
-	<div class="n-data" *ngIf="colorForm.controls.colorAccent.value">
+	<div class="n-data n-data__clickable"
+		 *ngIf="colorForm.controls.colorAccent.value"
+		 (click)="focusAccentColorInput()">
 		<div class="n-data-group">
 			<div class="n-text-bold">{{colorForm.controls.colorAccent.value.name}}</div>
 			<div class="n-text-small n-fade">{{colorForm.controls.colorAccent.value.filament}}</div>
@@ -49,8 +53,13 @@
 			<div class="n-text-right n-text-bold">{{colorForm.controls.colorAccent.value.price | currency:'USD':true:'1.2-2'}}</div>
 		</div>
 	</div>
-	<div class="n-data"
+	<div class="n-data n-data__alternate"
 		 *ngIf="colorForm.controls.colorMain.value && colorForm.controls.colorAccent.value">
+		<div class="n-data-group">
+			<div class="n-text-left">
+				<button class="n-btn n-btn__primary">Add to cart</button>
+			</div>
+		</div>
 		<div class="n-data-group">
 			<div class="n-text-right n-text-small">
 				Total: {{colorForm.controls.colorMain.value.price + colorForm.controls.colorAccent.value.price | currency:'USD':true:'1.2-2'}}
