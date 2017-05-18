@@ -4,6 +4,11 @@
 	.n-checkbox--toggle { display: none; }
 }
 
+.n-checkbox--toggle-icon {
+	display: flex;
+	align-items: center;
+}
+
 // unchecked
 .n-checkbox--toggle-icon:before {
 	content: '\E835';
