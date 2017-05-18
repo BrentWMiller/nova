@@ -11,16 +11,18 @@ export interface IColors {
 };
 
 @Component({
-	selector: 'n-color-picker',
-	templateUrl: './color-picker.component.html',
-	styleUrls: ['./color-picker.component.scss']
+	selector: 'n-visualizer',
+	templateUrl: './visualizer.component.html',
+	styleUrls: ['./visualizer.component.scss']
 })
 
-export class ColorPickerComponent implements OnInit {
+export class VisualizerComponent implements OnInit {
 	@ViewChild('mainColorInput') mainColorInput;
 	@ViewChild('accentColorInput') accentColorInput;
 
 	colorForm: FormGroup;
+	numberOfColorsForm: FormGroup;
+
 	colorFormValue: string;
 	colorMain: string;
 	colorAccent: string;
@@ -40,6 +42,10 @@ export class ColorPickerComponent implements OnInit {
 		this.colorForm = this.fb.group({
 			colorMain: ['', Validators.required],
 			colorAccent: ['', Validators.required]
+		});
+
+		this.numberOfColorsForm = this.fb.group({
+			numberOfColors: ['', Validators.required]
 		});
 	}
 

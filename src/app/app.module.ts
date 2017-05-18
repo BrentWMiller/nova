@@ -9,14 +9,14 @@ import { appRoutes } from './app.routes';
 import { AppComponent } from './app.component';
 import { ColorBlockComponent } from './components/color-block/color-block.component';
 import { HomeComponent } from './views/home/home.component';
-import { ColorPickerComponent } from './views/color-picker/color-picker.component';
+import { VisualizerComponent } from './views/visualizer/visualizer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ColorBlockComponent,
     HomeComponent,
-    ColorPickerComponent,
+    VisualizerComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

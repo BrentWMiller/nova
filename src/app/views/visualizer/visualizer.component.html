@@ -1,19 +1,29 @@
-<form class="color-selection" [formGroup]="colorForm" (ngSubmit)="updateVisualizer(color)">
+<form [formGroup]="numberOfColorsForm">
+	<div class="n-input">
+		<div class="n-radio">
+			<input formControlName="numberOfColors" id="singleColor" class="n-radio--toggle" type="radio" value="singleColor" [checked]="true">
+			<label for="singleColor" class="n-radio--toggle-icon">Single Color</label>
+		</div>
+		<div class="n-radio">
+			<input formControlName="numberOfColors" id="twoColor" class="n-radio--toggle" type="radio" value="twoColor">
+			<label for="twoColor" class="n-radio--toggle-icon">Two Color</label>
+		</div>
+	</div>
+</form>
+
+<form class="color-selection" [formGroup]="colorForm">
 	<div class="n-input color-input">
 		<label class="n-input--label">Main</label>
 		<select #mainColorInput class="n-input--field" formControlName="colorMain">
 			<option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
 		</select>
 	</div>
-	<div class="n-input color-input">
+	<div class="n-input color-input"
+		 *ngIf="numberOfColorsForm.controls.numberOfColors.value == 'twoColor'">
 		<label class="n-input--label">Accent</label>
 		<select #accentColorInput class="n-input--field" formControlName="colorAccent">
 			<option *ngFor="let color of colors" [ngValue]="color">{{color.name}}</option>
 		</select>
-	</div>
-	<div [hidden]="true">
-		<button class="n-btn" type="submit">Submit</button>
-		<button class="n-btn" (click)="resetVisualizer()">Reset</button>
 	</div>
 </form>
 
@@ -23,6 +33,7 @@
 		<div class="color color--main {{colorForm.controls.colorMain.value.class}}"
 			 (click)="focusMainColorInput()"></div>
 		<div class="color color--accent {{colorForm.controls.colorAccent.value.class}}"
+			 *ngIf="numberOfColorsForm.controls.numberOfColors.value == 'twoColor'"
 			 (click)="focusAccentColorInput()"></div>
 	</div>
 
@@ -37,19 +48,23 @@
 			<div class="n-text-small n-fade">{{colorForm.controls.colorMain.value.filament}}</div>
 		</div>
 		<div class="n-data-group">
-			<div class="n-text-right n-text-small n-fade">Main color</div>
+			<div class="n-text-right n-text-small">
+				<span class="n-fade">Main</span><div class="swatch {{colorForm.controls.colorMain.value.class}}"></div>
+			</div>
 			<div class="n-text-right n-text-bold">{{colorForm.controls.colorMain.value.price | currency:'USD':true:'1.2-2'}}</div>
 		</div>
 	</div>
 	<div class="n-data n-data__clickable"
-		 *ngIf="colorForm.controls.colorAccent.value"
+		 *ngIf="colorForm.controls.colorAccent.value && numberOfColorsForm.controls.numberOfColors.value == 'twoColor'"
 		 (click)="focusAccentColorInput()">
 		<div class="n-data-group">
 			<div class="n-text-bold">{{colorForm.controls.colorAccent.value.name}}</div>
 			<div class="n-text-small n-fade">{{colorForm.controls.colorAccent.value.filament}}</div>
 		</div>
 		<div class="n-data-group">
-			<div class="n-text-right n-text-small n-fade">Accent color</div>
+			<div class="n-text-right n-text-small">
+				<span class="n-fade">Accent</span><div class="swatch {{colorForm.controls.colorAccent.value.class}}"></div>
+			</div>
 			<div class="n-text-right n-text-bold">{{colorForm.controls.colorAccent.value.price | currency:'USD':true:'1.2-2'}}</div>
 		</div>
 	</div>
@@ -62,7 +77,12 @@
 		</div>
 		<div class="n-data-group">
 			<div class="n-text-right n-text-small">
-				Total: {{colorForm.controls.colorMain.value.price + colorForm.controls.colorAccent.value.price | currency:'USD':true:'1.2-2'}}
+				<span *ngIf="numberOfColorsForm.controls.numberOfColors.value == 'singleColor'">
+					Total: {{colorForm.controls.colorMain.value.price | currency:'USD':true:'1.2-2'}}
+				</span>
+				<span *ngIf="numberOfColorsForm.controls.numberOfColors.value == 'twoColor'">
+					Total: {{colorForm.controls.colorMain.value.price + colorForm.controls.colorAccent.value.price | currency:'USD':true:'1.2-2'}}
+				</span>
 			</div>
 		</div>
 	</div>
