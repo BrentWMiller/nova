@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TimelineLite, Back } from 'gsap';
 
 export interface IColors {
+	id: string;
 	name: string;
 	filament: string;
 	class: string;
@@ -17,43 +18,44 @@ export interface IColors {
 })
 
 export class VisualizerComponent implements OnInit {
-	@ViewChild('mainColorInput') mainColorInput;
-	@ViewChild('accentColorInput') accentColorInput;
-
-	colorForm: FormGroup;
-	numberOfColorsForm: FormGroup;
+	colorSelectionForm: FormGroup;
 
 	colorFormValue: string;
 	colorMain: string;
 	colorAccent: string;
 	colors: IColors[];
 
+	showMainColorSelection: boolean;
+	showAccentColorSelection: boolean = false;
+
 	constructor(private fb: FormBuilder) {
 		this.colors = [
-			{ name: 'Rose Red', filament: 'RR-105-ABS', class: 'color__roseRed', price: 5 },
-			{ name: 'Deep Purple', filament: 'DP-109-ABS', class: 'color__deepPurple', price: 4 },
-			{ name: 'Aqua Green', filament: 'AG-023-ABS', class: 'color__aquaGreen', price: 7 },
-			{ name: 'Gold', filament: 'G-01-PLA', class: 'color__gold', price: 7 },
-			{ name: 'Wine', filament: 'W-013-PLA', class: 'color__wine', price: 3 },
+			{ id: '001', name: 'Rose Red', filament: 'RR-105-ABS', class: 'color__roseRed', price: 5 },
+			{ id: '002', name: 'Deep Purple', filament: 'DP-109-ABS', class: 'color__deepPurple', price: 4 },
+			{ id: '003', name: 'Aqua Green', filament: 'AG-023-ABS', class: 'color__aquaGreen', price: 7 },
+			{ id: '004', name: 'Gold', filament: 'G-01-PLA', class: 'color__gold', price: 7 },
+			{ id: '005', name: 'Wine', filament: 'W-013-PLA', class: 'color__wine', price: 3 }
 		];
 	}
 
 	ngOnInit() {
-		this.colorForm = this.fb.group({
-			colorMain: ['', Validators.required],
-			colorAccent: ['', Validators.required]
+
+		this.colorSelectionForm = this.fb.group({
+			mainColor: ['', Validators.required],
+			accentColor: ['', Validators.required]
 		});
 
-		this.numberOfColorsForm = this.fb.group({
-			numberOfColors: ['', Validators.required]
-		});
+		this.toggleMainColorInput();
 	}
 
-	focusMainColorInput(): void {
-		this.mainColorInput.nativeElement.focus();
+	toggleMainColorInput(): void {
 	}
 
-	focusAccentColorInput(): void {
-		this.accentColorInput.nativeElement.focus();
+	toggleAccentColorInput(): void {
+		this.showAccentColorSelection = !this.showAccentColorSelection;
+	}
+
+	selectedColor(): void {
+		console.log(this.colorSelectionForm.value);
 	}
 }
