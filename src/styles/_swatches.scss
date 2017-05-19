@@ -1,0 +1,32 @@
+.n-swatch {
+	display: inline-block;
+	position: relative;
+	width: 1em;
+	height: 1em;
+	margin-left: $margin-base;
+
+	border: 1px solid color(gray, 1000);
+	border-radius: $border-radius-base;
+
+	&--clear {
+		position: relative;
+		background-color: color(gray, 900);
+		.material-icons {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	&__clickable {
+		cursor: pointer;
+		&:hover { opacity: 0.8; }
+		&:focus { opacity: 0.8; }
+	}
+
+	&__large {
+		width: 2em;
+		height: 2em;
+	}
+}
