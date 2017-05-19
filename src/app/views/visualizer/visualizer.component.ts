@@ -55,7 +55,7 @@ export class VisualizerComponent implements OnInit {
 		this.showAccentColorSelection = !this.showAccentColorSelection;
 	}
 
-	selectedColor(): void {
+	addToCart(): void {
 		console.log(this.colorSelectionForm.value);
 	}
 }

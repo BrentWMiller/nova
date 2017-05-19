@@ -1,104 +1,102 @@
-<div class="color-selector">
-	<form [formGroup]="colorSelectionForm">
+<form [formGroup]="colorSelectionForm" (ngSubmit)="addToCart()">
 
-		<!--Main Color Selection-->
-		<div class="color-selection color-selection__main"
-			 *ngIf="showMainColorSelection">
-			 Main
-			<div class="n-radio">
-				<input id="mainColorNull" class="n-radio--toggle" type="radio"
-						formControlName="mainColor" value="">
-				<label for="mainColorNull">
-					<span class="n-swatch n-swatch__clickable n-swatch__large n-swatch--clear">
-						<i class="material-icons">format_color_reset</i>
-					</span>
-				</label>
-			</div>
-			<div class="n-radio" *ngFor="let color of colors">
-				<input id="main_{{color.id}}" class="n-radio--toggle" type="radio"
-						formControlName="mainColor" [value]="color">
-				<label for="main_{{color.id}}">
-					<div class="n-swatch n-swatch__clickable n-swatch__large {{color.class}}"></div>
-				</label>
-			</div>
+	<!--Main Color Selection-->
+	<div class="color-selection color-selection__main"
+			*ngIf="showMainColorSelection">
+			Main
+		<div class="n-radio">
+			<input id="mainColorNull" class="n-radio--toggle" type="radio"
+					formControlName="mainColor" value="">
+			<label for="mainColorNull">
+				<span class="n-swatch n-swatch__clickable n-swatch__large n-swatch--clear">
+					<i class="material-icons">format_color_reset</i>
+				</span>
+			</label>
 		</div>
-
-		<!--Accent Color Selection-->
-		<div class="color-selection color-selection__accent"
-			 *ngIf="showAccentColorSelection">
-			 Accent
-			<div class="n-radio">
-				<input id="accentColorNull" class="n-radio--toggle" type="radio"
-						formControlName="accentColor" value="">
-				<label for="accentColorNull">
-					<span class="n-swatch n-swatch__clickable n-swatch__large n-swatch--clear">
-						<i class="material-icons">format_color_reset</i>
-					</span>
-				</label>
-			</div>
-			<div class="n-radio" *ngFor="let color of colors">
-				<input id="accent_{{color.id}}" class="n-radio--toggle" type="radio"
-						formControlName="accentColor" [value]="color">
-				<label for="accent_{{color.id}}">
-					<div class="n-swatch n-swatch__clickable n-swatch__large {{color.class}}"></div>
-				</label>
-			</div>
-		</div>
-
-	</form>
-</div>
-
-<div class="visualizer">
-
-	<div class="colors">
-		<div class="color color--main {{colorSelectionForm.controls.mainColor.value.class}}"
-			 (click)="toggleMainColorInput()"></div>
-		<div class="color color--accent {{colorSelectionForm.controls.accentColor.value.class}}"
-			 (click)="toggleAccentColorInput()"></div>
-	</div>
-
-</div>
-
-<div class="visualizer-data">
-	<div class="n-data n-data__clickable"
-		 *ngIf="colorSelectionForm.controls.mainColor.value"
-		 (click)="toggleMainColorInput()">
-		<div class="n-data-group">
-			<div class="n-text-bold">{{colorSelectionForm.controls.mainColor.value.name}}</div>
-			<div class="n-text-small n-fade">{{colorSelectionForm.controls.mainColor.value.filament}}</div>
-		</div>
-		<div class="n-data-group">
-			<div class="n-text-right n-text-small">
-				<span class="n-fade">Main</span><div class="n-swatch {{colorSelectionForm.controls.mainColor.value.class}}"></div>
-			</div>
-			<div class="n-text-right n-text-bold">{{colorSelectionForm.controls.mainColor.value.price | currency:'USD':true:'1.2-2'}}</div>
+		<div class="n-radio" *ngFor="let color of colors">
+			<input id="main_{{color.id}}" class="n-radio--toggle" type="radio"
+					formControlName="mainColor" [value]="color">
+			<label for="main_{{color.id}}">
+				<div class="n-swatch n-swatch__clickable n-swatch__large {{color.class}}"></div>
+			</label>
 		</div>
 	</div>
-	<div class="n-data n-data__clickable"
-		 *ngIf="colorSelectionForm.controls.accentColor.value"
-		 (click)="toggleAccentColorInput()">
-		<div class="n-data-group">
-			<div class="n-text-bold">{{colorSelectionForm.controls.accentColor.value.name}}</div>
-			<div class="n-text-small n-fade">{{colorSelectionForm.controls.accentColor.value.filament}}</div>
+
+	<!--Accent Color Selection-->
+	<div class="color-selection color-selection__accent"
+			*ngIf="showAccentColorSelection">
+			Accent
+		<div class="n-radio">
+			<input id="accentColorNull" class="n-radio--toggle" type="radio"
+					formControlName="accentColor" value="">
+			<label for="accentColorNull">
+				<span class="n-swatch n-swatch__clickable n-swatch__large n-swatch--clear">
+					<i class="material-icons">format_color_reset</i>
+				</span>
+			</label>
 		</div>
-		<div class="n-data-group">
-			<div class="n-text-right n-text-small">
-				<span class="n-fade">Accent</span><div class="n-swatch {{colorSelectionForm.controls.accentColor.value.class}}"></div>
-			</div>
-			<div class="n-text-right n-text-bold">{{colorSelectionForm.controls.accentColor.value.price | currency:'USD':true:'1.2-2'}}</div>
+		<div class="n-radio" *ngFor="let color of colors">
+			<input id="accent_{{color.id}}" class="n-radio--toggle" type="radio"
+					formControlName="accentColor" [value]="color">
+			<label for="accent_{{color.id}}">
+				<div class="n-swatch n-swatch__clickable n-swatch__large {{color.class}}"></div>
+			</label>
 		</div>
 	</div>
-	<div class="n-data n-data__alternate"
-		 *ngIf="colorSelectionForm.controls.mainColor.value && colorSelectionForm.controls.accentColor.value">
-		<div class="n-data-group">
-			<div class="n-text-left">
-				<button class="n-btn n-btn__primary">Add to cart</button>
+
+	<div class="visualizer">
+
+		<div class="colors">
+			<div class="color color--main {{colorSelectionForm.controls.mainColor.value.class}}"
+				(click)="toggleMainColorInput()"></div>
+			<div class="color color--accent {{colorSelectionForm.controls.accentColor.value.class}}"
+				(click)="toggleAccentColorInput()"></div>
+		</div>
+
+	</div>
+
+	<div class="visualizer-data">
+		<div class="n-data n-data__clickable"
+			*ngIf="colorSelectionForm.controls.mainColor.value"
+			(click)="toggleMainColorInput()">
+			<div class="n-data-group">
+				<div class="n-text-bold">{{colorSelectionForm.controls.mainColor.value.name}}</div>
+				<div class="n-text-small n-fade">{{colorSelectionForm.controls.mainColor.value.filament}}</div>
+			</div>
+			<div class="n-data-group">
+				<div class="n-text-right n-text-small">
+					<span class="n-fade">Main</span><div class="n-swatch {{colorSelectionForm.controls.mainColor.value.class}}"></div>
+				</div>
+				<div class="n-text-right n-text-bold">{{colorSelectionForm.controls.mainColor.value.price | currency:'USD':true:'1.2-2'}}</div>
 			</div>
 		</div>
-		<div class="n-data-group">
-			<div class="n-text-right n-text-small">
-				Total: {{colorSelectionForm.controls.mainColor.value.price + colorSelectionForm.controls.accentColor.value.price | currency:'USD':true:'1.2-2'}}
+		<div class="n-data n-data__clickable"
+			*ngIf="colorSelectionForm.controls.accentColor.value"
+			(click)="toggleAccentColorInput()">
+			<div class="n-data-group">
+				<div class="n-text-bold">{{colorSelectionForm.controls.accentColor.value.name}}</div>
+				<div class="n-text-small n-fade">{{colorSelectionForm.controls.accentColor.value.filament}}</div>
+			</div>
+			<div class="n-data-group">
+				<div class="n-text-right n-text-small">
+					<span class="n-fade">Accent</span><div class="n-swatch {{colorSelectionForm.controls.accentColor.value.class}}"></div>
+				</div>
+				<div class="n-text-right n-text-bold">{{colorSelectionForm.controls.accentColor.value.price | currency:'USD':true:'1.2-2'}}</div>
+			</div>
+		</div>
+		<div class="n-data n-data__alternate"
+			*ngIf="colorSelectionForm.controls.mainColor.value && colorSelectionForm.controls.accentColor.value">
+			<div class="n-data-group">
+				<div class="n-text-left">
+					<button type="submit" class="n-btn n-btn__primary"><i class="material-icons">add_shopping_cart</i> Add to cart</button>
+				</div>
+			</div>
+			<div class="n-data-group">
+				<div class="n-text-right n-text-small">
+					Total: {{colorSelectionForm.controls.mainColor.value.price + colorSelectionForm.controls.accentColor.value.price | currency:'USD':true:'1.2-2'}}
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
+</form>
