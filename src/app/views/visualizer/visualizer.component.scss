@@ -5,6 +5,9 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 
+	padding: $padding-base $padding-base ($padding-base - .2em) 0;
+	margin: $margin-base 0;
+
 	background-color: color(gray, 1000);
 }
 

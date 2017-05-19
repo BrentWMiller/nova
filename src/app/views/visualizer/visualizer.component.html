@@ -2,7 +2,9 @@
 	<form [formGroup]="colorSelectionForm">
 
 		<!--Main Color Selection-->
-		<div class="color-selection color-selection__main">
+		<div class="color-selection color-selection__main"
+			 *ngIf="showMainColorSelection">
+			 Main
 			<div class="n-radio">
 				<input id="mainColorNull" class="n-radio--toggle" type="radio"
 						formControlName="mainColor" value="">
@@ -24,6 +26,7 @@
 		<!--Accent Color Selection-->
 		<div class="color-selection color-selection__accent"
 			 *ngIf="showAccentColorSelection">
+			 Accent
 			<div class="n-radio">
 				<input id="accentColorNull" class="n-radio--toggle" type="radio"
 						formControlName="accentColor" value="">

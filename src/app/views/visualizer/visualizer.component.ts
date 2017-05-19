@@ -25,7 +25,7 @@ export class VisualizerComponent implements OnInit {
 	colorAccent: string;
 	colors: IColors[];
 
-	showMainColorSelection: boolean;
+	showMainColorSelection: boolean = true;
 	showAccentColorSelection: boolean = false;
 
 	constructor(private fb: FormBuilder) {
@@ -39,19 +39,19 @@ export class VisualizerComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
 		this.colorSelectionForm = this.fb.group({
 			mainColor: ['', Validators.required],
 			accentColor: ['', Validators.required]
 		});
-
-		this.toggleMainColorInput();
 	}
 
 	toggleMainColorInput(): void {
+		this.showAccentColorSelection = false;
+		this.showMainColorSelection = true;
 	}
 
 	toggleAccentColorInput(): void {
+		this.showMainColorSelection = false;
 		this.showAccentColorSelection = !this.showAccentColorSelection;
 	}
 
